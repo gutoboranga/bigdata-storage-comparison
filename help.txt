@@ -1,0 +1,69 @@
+# Mongodb
+
+## Start server
+
+With mongo already installed: `mongod`
+
+## YCSB
+
+- Load: `./bin/ycsb load mongodb -s -P workloads/workloada -p mongodb.url="mongodb://127.0.0.1:27017" > load_mongodb.txt`
+- Run: `./bin/ycsb run mongodb -s -P workloads/workloada -p mongodb.url="mongodb://127.0.0.1:27017" > run_mongodb.txt`
+
+
+
+# Cassandra
+
+## Start server
+
+With cassandra already installed: `cassandra -f`
+
+## Configure Keyspace
+
+- Start cassandra query language client with `cqlsh`;
+- Execute:
+
+```
+create keyspace usertable
+    with REPLICATION = {
+        'class': 'SimpleStrategy',
+        'replication_factor' : 1
+    };
+
+use usertable;
+    create column family data;
+
+CREATE KEYSPACE ycsb
+    WITH REPLICATION = {
+        'class' : 'SimpleStrategy',
+        'replication_factor' : 1
+    };
+```
+
+## YCSB
+
+- Load: `
+./bin/ycsb load cassandra-cql -p hosts="127.0.0.1" -p port=9042 -P workloads/workloada > ~/personal/pdp/workload-a/load/cassandra.txt
+`
+
+
+
+- Run: `./bin/ycsb run mongodb -s -P workloads/workloada -p mongodb.url="mongodb://127.0.0.1:27017" > run_mongodb.txt`
+
+
+
+
+
+
+
+create 'usertable', 'cf', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}}
+
+
+
+./bin/ycsb load cassandra-cql -p hosts="127.0.0.1" -p port=9042 -P workloads/workloada > ~/personal/pdp/workload-a/load/cassandra.txt
+
+
+
+
+
+COUCHBASE
+bin/ycsb load couchbase2 -s -P workloads/workloada > ~/personal/pdp/workload-a/load/couchbase.txt
