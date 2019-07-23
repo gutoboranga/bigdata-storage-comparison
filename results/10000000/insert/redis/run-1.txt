@@ -1,0 +1,532 @@
+2019-07-22 22:12:05
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode):
+
+"Thread-3" #12 prio=5 os_prio=31 tid=0x00007fbe568d6800 nid=0x3f03 runnable [0x00007000084d8000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at java.net.SocketInputStream.read(SocketInputStream.java:107)
+	at redis.clients.util.RedisInputStream.ensureFill(RedisInputStream.java:196)
+	at redis.clients.util.RedisInputStream.readByte(RedisInputStream.java:40)
+	at redis.clients.jedis.Protocol.process(Protocol.java:151)
+	at redis.clients.jedis.Protocol.read(Protocol.java:215)
+	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:340)
+	at redis.clients.jedis.Connection.getIntegerReply(Connection.java:265)
+	at redis.clients.jedis.Jedis.zadd(Jedis.java:1385)
+	at com.yahoo.ycsb.db.RedisClient.insert(RedisClient.java:141)
+	at com.yahoo.ycsb.DBWrapper.insert(DBWrapper.java:221)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransactionInsert(CoreWorkload.java:825)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransaction(CoreWorkload.java:650)
+	at com.yahoo.ycsb.ClientThread.run(ClientThread.java:122)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-2" #11 prio=5 os_prio=31 tid=0x00007fbe568d6000 nid=0x4007 waiting on condition [0x00007000083d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000740008c20> (a java.util.concurrent.CountDownLatch$Sync)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)
+	at com.yahoo.ycsb.StatusThread.waitForClientsUntil(StatusThread.java:199)
+	at com.yahoo.ycsb.StatusThread.run(StatusThread.java:120)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fbe5586d800 nid=0x4303 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fbe55863800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fbe56807000 nid=0x3503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fbe56037000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fbe56800000 nid=0x340b waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fbe57005000 nid=0x2d03 in Object.wait() [0x0000700007cc0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fbe57004000 nid=0x5003 in Object.wait() [0x0000700007bbd000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fbe55803800 nid=0x2603 in Object.wait() [0x00007000075ab000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1245)
+	- locked <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1319)
+	at com.yahoo.ycsb.Client.main(Client.java:354)
+
+"VM Thread" os_prio=31 tid=0x00007fbe55861000 nid=0x5203 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fbe56804800 nid=0x1c07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fbe56805800 nid=0x1e03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fbe56806000 nid=0x2b03 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fbe55814800 nid=0x2c03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fbe5586e000 nid=0x4203 waiting on condition 
+
+JNI global references: 31
+
+Heap
+ PSYoungGen      total 26112K, used 8210K [0x0000000795580000, 0x0000000797100000, 0x00000007c0000000)
+  eden space 24064K, 32% used [0x0000000795580000,0x0000000795d14800,0x0000000796d00000)
+  from space 2048K, 21% used [0x0000000796f00000,0x0000000796f70040,0x0000000797100000)
+  to   space 2048K, 0% used [0x0000000796d00000,0x0000000796d00000,0x0000000796f00000)
+ ParOldGen       total 87552K, used 2404K [0x0000000740000000, 0x0000000745580000, 0x0000000795580000)
+  object space 87552K, 2% used [0x0000000740000000,0x00000007402590d0,0x0000000745580000)
+ Metaspace       used 5892K, capacity 6016K, committed 6272K, reserved 1056768K
+  class space    used 598K, capacity 628K, committed 640K, reserved 1048576K
+
+2019-07-22 22:12:05
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode):
+
+"SIGINT handler" #13 daemon prio=9 os_prio=31 tid=0x00007fbe56048800 nid=0x1207 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-3" #12 prio=5 os_prio=31 tid=0x00007fbe568d6800 nid=0x3f03 runnable [0x00007000084d8000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at java.net.SocketInputStream.read(SocketInputStream.java:107)
+	at redis.clients.util.RedisInputStream.ensureFill(RedisInputStream.java:196)
+	at redis.clients.util.RedisInputStream.readByte(RedisInputStream.java:40)
+	at redis.clients.jedis.Protocol.process(Protocol.java:151)
+	at redis.clients.jedis.Protocol.read(Protocol.java:215)
+	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:340)
+	at redis.clients.jedis.Connection.getIntegerReply(Connection.java:265)
+	at redis.clients.jedis.Jedis.zadd(Jedis.java:1385)
+	at com.yahoo.ycsb.db.RedisClient.insert(RedisClient.java:141)
+	at com.yahoo.ycsb.DBWrapper.insert(DBWrapper.java:221)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransactionInsert(CoreWorkload.java:825)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransaction(CoreWorkload.java:650)
+	at com.yahoo.ycsb.ClientThread.run(ClientThread.java:122)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-2" #11 prio=5 os_prio=31 tid=0x00007fbe568d6000 nid=0x4007 waiting on condition [0x00007000083d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000740008c20> (a java.util.concurrent.CountDownLatch$Sync)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)
+	at com.yahoo.ycsb.StatusThread.waitForClientsUntil(StatusThread.java:199)
+	at com.yahoo.ycsb.StatusThread.run(StatusThread.java:120)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fbe5586d800 nid=0x4303 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fbe55863800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fbe56807000 nid=0x3503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fbe56037000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fbe56800000 nid=0x340b waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fbe57005000 nid=0x2d03 in Object.wait() [0x0000700007cc0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fbe57004000 nid=0x5003 in Object.wait() [0x0000700007bbd000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fbe55803800 nid=0x2603 in Object.wait() [0x00007000075ab000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1245)
+	- locked <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1319)
+	at com.yahoo.ycsb.Client.main(Client.java:354)
+
+"VM Thread" os_prio=31 tid=0x00007fbe55861000 nid=0x5203 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fbe56804800 nid=0x1c07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fbe56805800 nid=0x1e03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fbe56806000 nid=0x2b03 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fbe55814800 nid=0x2c03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fbe5586e000 nid=0x4203 waiting on condition 
+
+JNI global references: 31
+
+Heap
+ PSYoungGen      total 26112K, used 8691K [0x0000000795580000, 0x0000000797100000, 0x00000007c0000000)
+  eden space 24064K, 34% used [0x0000000795580000,0x0000000795d8cd78,0x0000000796d00000)
+  from space 2048K, 21% used [0x0000000796f00000,0x0000000796f70040,0x0000000797100000)
+  to   space 2048K, 0% used [0x0000000796d00000,0x0000000796d00000,0x0000000796f00000)
+ ParOldGen       total 87552K, used 2404K [0x0000000740000000, 0x0000000745580000, 0x0000000795580000)
+  object space 87552K, 2% used [0x0000000740000000,0x00000007402590d0,0x0000000745580000)
+ Metaspace       used 5894K, capacity 6016K, committed 6272K, reserved 1056768K
+  class space    used 599K, capacity 628K, committed 640K, reserved 1048576K
+
+2019-07-22 22:12:05
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode):
+
+"SIGINT handler" #13 daemon prio=9 os_prio=31 tid=0x00007fbe56048800 nid=0x1207 runnable [0x0000700007422000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.ApplicationShutdownHooks$1.run(ApplicationShutdownHooks.java:46)
+	at java.lang.Shutdown.runHooks(Shutdown.java:123)
+	at java.lang.Shutdown.sequence(Shutdown.java:167)
+	at java.lang.Shutdown.exit(Shutdown.java:212)
+	- locked <0x000000074003bb48> (a java.lang.Class for java.lang.Shutdown)
+	at java.lang.Terminator$1.handle(Terminator.java:52)
+	at sun.misc.Signal$1.run(Signal.java:212)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-3" #12 prio=5 os_prio=31 tid=0x00007fbe568d6800 nid=0x3f03 runnable [0x00007000084d8000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at java.net.SocketInputStream.read(SocketInputStream.java:107)
+	at redis.clients.util.RedisInputStream.ensureFill(RedisInputStream.java:196)
+	at redis.clients.util.RedisInputStream.readByte(RedisInputStream.java:40)
+	at redis.clients.jedis.Protocol.process(Protocol.java:151)
+	at redis.clients.jedis.Protocol.read(Protocol.java:215)
+	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:340)
+	at redis.clients.jedis.Connection.getStatusCodeReply(Connection.java:239)
+	at redis.clients.jedis.Jedis.hmset(Jedis.java:705)
+	at com.yahoo.ycsb.db.RedisClient.insert(RedisClient.java:139)
+	at com.yahoo.ycsb.DBWrapper.insert(DBWrapper.java:221)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransactionInsert(CoreWorkload.java:825)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransaction(CoreWorkload.java:650)
+	at com.yahoo.ycsb.ClientThread.run(ClientThread.java:122)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-2" #11 prio=5 os_prio=31 tid=0x00007fbe568d6000 nid=0x4007 waiting on condition [0x00007000083d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000740008c20> (a java.util.concurrent.CountDownLatch$Sync)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)
+	at com.yahoo.ycsb.StatusThread.waitForClientsUntil(StatusThread.java:199)
+	at com.yahoo.ycsb.StatusThread.run(StatusThread.java:120)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fbe5586d800 nid=0x4303 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fbe55863800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fbe56807000 nid=0x3503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fbe56037000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fbe56800000 nid=0x340b waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fbe57005000 nid=0x2d03 in Object.wait() [0x0000700007cc0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fbe57004000 nid=0x5003 in Object.wait() [0x0000700007bbd000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fbe55803800 nid=0x2603 in Object.wait() [0x00007000075ab000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1245)
+	- locked <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1319)
+	at com.yahoo.ycsb.Client.main(Client.java:354)
+
+"VM Thread" os_prio=31 tid=0x00007fbe55861000 nid=0x5203 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fbe56804800 nid=0x1c07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fbe56805800 nid=0x1e03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fbe56806000 nid=0x2b03 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fbe55814800 nid=0x2c03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fbe5586e000 nid=0x4203 waiting on condition 
+
+JNI global references: 31
+
+Heap
+ PSYoungGen      total 26112K, used 8691K [0x0000000795580000, 0x0000000797100000, 0x00000007c0000000)
+  eden space 24064K, 34% used [0x0000000795580000,0x0000000795d8cd78,0x0000000796d00000)
+  from space 2048K, 21% used [0x0000000796f00000,0x0000000796f70040,0x0000000797100000)
+  to   space 2048K, 0% used [0x0000000796d00000,0x0000000796d00000,0x0000000796f00000)
+ ParOldGen       total 87552K, used 2404K [0x0000000740000000, 0x0000000745580000, 0x0000000795580000)
+  object space 87552K, 2% used [0x0000000740000000,0x00000007402590d0,0x0000000745580000)
+ Metaspace       used 5895K, capacity 6080K, committed 6272K, reserved 1056768K
+  class space    used 599K, capacity 628K, committed 640K, reserved 1048576K
+
+2019-07-22 22:12:06
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode):
+
+"SIGINT handler" #13 daemon prio=9 os_prio=31 tid=0x00007fbe56048800 nid=0x1207 runnable [0x0000700007422000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.IdentityHashMap.keySet(IdentityHashMap.java:976)
+	at java.lang.ApplicationShutdownHooks.runHooks(ApplicationShutdownHooks.java:97)
+	- locked <0x000000074003bc30> (a java.lang.Class for java.lang.ApplicationShutdownHooks)
+	at java.lang.ApplicationShutdownHooks$1.run(ApplicationShutdownHooks.java:46)
+	at java.lang.Shutdown.runHooks(Shutdown.java:123)
+	at java.lang.Shutdown.sequence(Shutdown.java:167)
+	at java.lang.Shutdown.exit(Shutdown.java:212)
+	- locked <0x000000074003bb48> (a java.lang.Class for java.lang.Shutdown)
+	at java.lang.Terminator$1.handle(Terminator.java:52)
+	at sun.misc.Signal$1.run(Signal.java:212)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-3" #12 prio=5 os_prio=31 tid=0x00007fbe568d6800 nid=0x3f03 runnable [0x00007000084d8000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at java.net.SocketInputStream.read(SocketInputStream.java:107)
+	at redis.clients.util.RedisInputStream.ensureFill(RedisInputStream.java:196)
+	at redis.clients.util.RedisInputStream.readByte(RedisInputStream.java:40)
+	at redis.clients.jedis.Protocol.process(Protocol.java:151)
+	at redis.clients.jedis.Protocol.read(Protocol.java:215)
+	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:340)
+	at redis.clients.jedis.Connection.getIntegerReply(Connection.java:265)
+	at redis.clients.jedis.Jedis.zadd(Jedis.java:1385)
+	at com.yahoo.ycsb.db.RedisClient.insert(RedisClient.java:141)
+	at com.yahoo.ycsb.DBWrapper.insert(DBWrapper.java:221)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransactionInsert(CoreWorkload.java:825)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransaction(CoreWorkload.java:650)
+	at com.yahoo.ycsb.ClientThread.run(ClientThread.java:122)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-2" #11 prio=5 os_prio=31 tid=0x00007fbe568d6000 nid=0x4007 waiting on condition [0x00007000083d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000740008c20> (a java.util.concurrent.CountDownLatch$Sync)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)
+	at com.yahoo.ycsb.StatusThread.waitForClientsUntil(StatusThread.java:199)
+	at com.yahoo.ycsb.StatusThread.run(StatusThread.java:120)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fbe5586d800 nid=0x4303 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fbe55863800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fbe56807000 nid=0x3503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fbe56037000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fbe56800000 nid=0x340b waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fbe57005000 nid=0x2d03 in Object.wait() [0x0000700007cc0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fbe57004000 nid=0x5003 in Object.wait() [0x0000700007bbd000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fbe55803800 nid=0x2603 in Object.wait() [0x00007000075ab000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1245)
+	- locked <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1319)
+	at com.yahoo.ycsb.Client.main(Client.java:354)
+
+"VM Thread" os_prio=31 tid=0x00007fbe55861000 nid=0x5203 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fbe56804800 nid=0x1c07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fbe56805800 nid=0x1e03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fbe56806000 nid=0x2b03 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fbe55814800 nid=0x2c03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fbe5586e000 nid=0x4203 waiting on condition 
+
+JNI global references: 31
+
+Heap
+ PSYoungGen      total 26112K, used 8932K [0x0000000795580000, 0x0000000797100000, 0x00000007c0000000)
+  eden space 24064K, 35% used [0x0000000795580000,0x0000000795dc9060,0x0000000796d00000)
+  from space 2048K, 21% used [0x0000000796f00000,0x0000000796f70040,0x0000000797100000)
+  to   space 2048K, 0% used [0x0000000796d00000,0x0000000796d00000,0x0000000796f00000)
+ ParOldGen       total 87552K, used 2404K [0x0000000740000000, 0x0000000745580000, 0x0000000795580000)
+  object space 87552K, 2% used [0x0000000740000000,0x00000007402590d0,0x0000000745580000)
+ Metaspace       used 5899K, capacity 6080K, committed 6272K, reserved 1056768K
+  class space    used 600K, capacity 628K, committed 640K, reserved 1048576K
+
+2019-07-22 22:12:06
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.25-b02 mixed mode):
+
+"SIGINT handler" #13 daemon prio=9 os_prio=31 tid=0x00007fbe56048800 nid=0x1207 runnable [0x0000700007422000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.IdentityHashMap$KeySet.iterator(IdentityHashMap.java:981)
+	at java.lang.ApplicationShutdownHooks.runHooks(ApplicationShutdownHooks.java:101)
+	at java.lang.ApplicationShutdownHooks$1.run(ApplicationShutdownHooks.java:46)
+	at java.lang.Shutdown.runHooks(Shutdown.java:123)
+	at java.lang.Shutdown.sequence(Shutdown.java:167)
+	at java.lang.Shutdown.exit(Shutdown.java:212)
+	- locked <0x000000074003bb48> (a java.lang.Class for java.lang.Shutdown)
+	at java.lang.Terminator$1.handle(Terminator.java:52)
+	at sun.misc.Signal$1.run(Signal.java:212)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-3" #12 prio=5 os_prio=31 tid=0x00007fbe568d6800 nid=0x3f03 runnable [0x00007000084d8000]
+   java.lang.Thread.State: RUNNABLE
+	at org.HdrHistogram.ConcurrentHistogram.resize(ConcurrentHistogram.java:316)
+	at org.HdrHistogram.AbstractHistogram.handleRecordException(AbstractHistogram.java:430)
+	at org.HdrHistogram.AbstractHistogram.recordSingleValue(AbstractHistogram.java:420)
+	at org.HdrHistogram.AbstractHistogram.recordValue(AbstractHistogram.java:333)
+	at org.HdrHistogram.Recorder.recordValue(Recorder.java:100)
+	at com.yahoo.ycsb.measurements.OneMeasurementHdrHistogram.measure(OneMeasurementHdrHistogram.java:101)
+	at com.yahoo.ycsb.measurements.Measurements.measure(Measurements.java:189)
+	at com.yahoo.ycsb.DBWrapper.measure(DBWrapper.java:178)
+	at com.yahoo.ycsb.DBWrapper.insert(DBWrapper.java:223)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransactionInsert(CoreWorkload.java:825)
+	at com.yahoo.ycsb.workloads.CoreWorkload.doTransaction(CoreWorkload.java:650)
+	at com.yahoo.ycsb.ClientThread.run(ClientThread.java:122)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-2" #11 prio=5 os_prio=31 tid=0x00007fbe568d6000 nid=0x4007 waiting on condition [0x00007000083d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000740008c20> (a java.util.concurrent.CountDownLatch$Sync)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)
+	at com.yahoo.ycsb.StatusThread.waitForClientsUntil(StatusThread.java:199)
+	at com.yahoo.ycsb.StatusThread.run(StatusThread.java:120)
+
+"Service Thread" #8 daemon prio=9 os_prio=31 tid=0x00007fbe5586d800 nid=0x4303 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007fbe55863800 nid=0x4403 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007fbe56807000 nid=0x3503 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007fbe56037000 nid=0x4703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007fbe56800000 nid=0x340b waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007fbe57005000 nid=0x2d03 in Object.wait() [0x0000700007cc0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x000000074000e2f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007fbe57004000 nid=0x5003 in Object.wait() [0x0000700007bbd000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x000000074000e4b0> (a java.lang.ref.Reference$Lock)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007fbe55803800 nid=0x2603 in Object.wait() [0x00007000075ab000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1245)
+	- locked <0x000000074000c000> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1319)
+	at com.yahoo.ycsb.Client.main(Client.java:354)
+
+"VM Thread" os_prio=31 tid=0x00007fbe55861000 nid=0x5203 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007fbe56804800 nid=0x1c07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007fbe56805800 nid=0x1e03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007fbe56806000 nid=0x2b03 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007fbe55814800 nid=0x2c03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007fbe5586e000 nid=0x4203 waiting on condition 
+
+JNI global references: 31
+
+Heap
+ PSYoungGen      total 26112K, used 8932K [0x0000000795580000, 0x0000000797100000, 0x00000007c0000000)
+  eden space 24064K, 35% used [0x0000000795580000,0x0000000795dc9060,0x0000000796d00000)
+  from space 2048K, 21% used [0x0000000796f00000,0x0000000796f70040,0x0000000797100000)
+  to   space 2048K, 0% used [0x0000000796d00000,0x0000000796d00000,0x0000000796f00000)
+ ParOldGen       total 87552K, used 2404K [0x0000000740000000, 0x0000000745580000, 0x0000000795580000)
+  object space 87552K, 2% used [0x0000000740000000,0x00000007402590d0,0x0000000745580000)
+ Metaspace       used 5901K, capacity 6080K, committed 6272K, reserved 1056768K
+  class space    used 600K, capacity 628K, committed 640K, reserved 1048576K
+

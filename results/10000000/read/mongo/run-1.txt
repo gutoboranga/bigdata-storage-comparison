@@ -138,3 +138,35 @@ Heap
  Metaspace       used 10946K, capacity 11092K, committed 11264K, reserved 1058816K
   class space    used 1148K, capacity 1208K, committed 1280K, reserved 1048576K
 
+[OVERALL], RunTime(ms), 137375541
+[OVERALL], Throughput(ops/sec), 72.79316192101474
+[TOTAL_GCS_PS_Scavenge], Count, 10043
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 7588
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.005523545126566599
+[TOTAL_GCS_PS_MarkSweep], Count, 14
+[TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 647
+[TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 4.709717576289654E-4
+[TOTAL_GCs], Count, 10057
+[TOTAL_GC_TIME], Time(ms), 8235
+[TOTAL_GC_TIME_%], Time(%), 0.005994516884195564
+[READ], Operations, 3005202
+[READ], AverageLatency(us), 13066.24199105418
+[READ], MinLatency(us), 121
+[READ], MaxLatency(us), 33587199
+[READ], 95thPercentileLatency(us), 44383
+[READ], 99thPercentileLatency(us), 108607
+[READ], Return=OK, 3005202
+[READ], Return=NOT_FOUND, 6994636
+[READ], Return=ERROR, 162
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 1715.0
+[CLEANUP], MinLatency(us), 1715
+[CLEANUP], MaxLatency(us), 1715
+[CLEANUP], 95thPercentileLatency(us), 1715
+[CLEANUP], 99thPercentileLatency(us), 1715
+[READ-FAILED], Operations, 6994798
+[READ-FAILED], AverageLatency(us), 801.426844206223
+[READ-FAILED], MinLatency(us), 88
+[READ-FAILED], MaxLatency(us), 30949375
+[READ-FAILED], 95thPercentileLatency(us), 152
+[READ-FAILED], 99thPercentileLatency(us), 203
