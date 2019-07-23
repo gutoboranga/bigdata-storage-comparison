@@ -33,4 +33,6 @@ updateproportion=0
 scanproportion=0
 insertproportion=0
 
+maxexecutiontime=21600
+
 requestdistribution=zipfian
