@@ -61,12 +61,33 @@ couch-all:
 	./bin/ycsb load couchbase2 -s -P ../workloads/$(SIZE)/$(OP) > ../results/$(SIZE)/$(OP)/couchbase/load-$(I).txt
 	./bin/ycsb run couchbase2 -s -P ../workloads/$(SIZE)/$(OP) > ../results/$(SIZE)/$(OP)/couchbase/run-$(I).txt
 
+elastic:
+	cd /usr/local/var/lib/elasticsearch/data; rm -rf es.ycsb.cluster; cd ~/personal/pdp/YCSB;
+	./bin/ycsb load elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/$(SIZE)/insert > ../results/$(SIZE)/insert/elasticsearch/result-final.txt
+	./bin/ycsb run elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/$(SIZE)/read > ../results/$(SIZE)/read/elasticsearch/result-final.txt
+
+redis-all:
+	redis-cli flushall
+	./bin/ycsb load redis -s -P ../workloads/$(SIZE)/$(OP) -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../results/$(SIZE)/$(OP)/redis/load-$(I).txt
+	./bin/ycsb run redis -s -P ../workloads/$(SIZE)/$(OP) -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../results/$(SIZE)/$(OP)/redis/run-$(I).txt
+
 couch-run:
 	./bin/ycsb run couchbase2 -s -P ../workloads/$(SIZE)/$(OP) > ../results/$(SIZE)/$(OP)/couchbase/run-$(I).txt
 
 cassandra-all:
 	cqlsh -f ../cassandra_reset
 	./bin/ycsb run cassandra2-cql -p hosts="127.0.0.1" -s -P ../workloads/$(SIZE)/$(OP) > ../results/$(SIZE)/$(OP)/cassandra/run-1.txt
+
+lasanha:
+	@echo "\nELASTIC SEARCH\n\n"
+	cd /usr/local/var/lib/elasticsearch/data; rm -rf es.ycsb.cluster; cd ~/personal/pdp/YCSB;
+	./bin/ycsb load elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/10000/insert > ../results/10000/insert/elasticsearch/result-final.txt
+	./bin/ycsb run elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/10000/read > ../results/10000/read/elasticsearch/result-final.txt
+	cd /usr/local/var/lib/elasticsearch/data; rm -rf es.ycsb.cluster; cd ~/personal/pdp/YCSB;
+	./bin/ycsb load elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/100000/insert > ../results/100000/insert/elasticsearch/result-final.txt
+	./bin/ycsb run elasticsearch -p path.home=/usr/local/var/lib/elasticsearch/ -s -P ../workloads/100000/read > ../results/100000/read/elasticsearch/result-final.txt
+	cd ..; git add results; git commit -m "final"; git push;
+	@echo "\nAE CARAIO\n\n"
 
 mongo-ten-mi:
 	@echo "\nMONGO\n\n"
